@@ -35,10 +35,14 @@ Lets start you off the traditional way - \"Hello World!\"
 OBJECTIVE == Print \"Hello World!\" to the screen
 """)
         answer = "print(\"Hello World!\")"
-        tutIn = input(
+        while True:
+            tutIn = input(
 """=========================\n#Now it's your turn - Enter your code below
 """)
-        while True:
+            if tutIn.startswith("print("):
+                pass
+            else:
+                tutIn = tutIn.replace("print (","print(",1)
             if tutIn == answer:
                 break
             else:
