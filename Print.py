@@ -1,14 +1,13 @@
 #Variables Tutorial
 import sys, time, random
 class lesson(object):
-
-
+    
     def __init__(self, lessonType):
         self.lesson = lesson
         getattr(lesson,lessonType)()
     def lesson1():
-        global userin
-        userin = ""
+        #global userin
+        #userin = ""
         def rlsmTyp(sentence):
             for l in sentence:
                 sys.stdout.write(l)
@@ -22,7 +21,7 @@ Hello - This is the tutorial on how to print something to the screen!
 print("Use this as an example for your print function!")
 """)
         print(
-"""=========================
+"""============================
 Use this as an example for your print function!
 ============================""")
 
@@ -35,29 +34,26 @@ Lets start you off the traditional way - \"Hello World!\"
 
 OBJECTIVE == Print \"Hello World!\" to the screen
 """)
+###############################################################################
         answer = "print(\"Hello World!\")"
         while True:
-            tutIn = input(
+            userin = input(
 """=========================\n#Now it's your turn - Enter your code below
 """)
-            if userin.startswith("print("):
-                pass
-            else:
-                userin = tutIn.replace("print (","print(",1)
-            userin = userin.replace("'","\"")
+            userin = userin.replace("'","\"").replace("print (","print(",1)
             if userin == answer:
                 break
             else:
-                print("ERROR: yourCode != " + answer)
+                print("\n"*8+"ERROR: yourCode != " + answer)
                 if userin.count("\"") != 2:
                     print("You missed a speech mark")
-                if ("(",")") not in userin:
+                if "(" not in userin or ")" not in userin:
                     print("You missed a bracket")
-                if "Hello World" not in userin:
+                if "Hello World!" not in userin:
                     print(
 """Your text is not correct, check if spelled correctly and it is properly
 capitalised""")
-                    
+###############################################################################
         print(
 """=========================
 Hello World!
@@ -67,6 +63,7 @@ Hello World!
 """
 Well done, try this blah blah
 
+Todo:
 -Concatenation
 
 """)
