@@ -7,6 +7,8 @@ class lesson(object):
         self.lesson = lesson
         getattr(lesson,lessonType)()
     def lesson1():
+        global userin
+        userin = ""
         def rlsmTyp(sentence):
             for l in sentence:
                 sys.stdout.write(l)
@@ -15,7 +17,6 @@ class lesson(object):
 
         rlsmTyp(
 """Lesson: Printing
-
 Hello - This is the tutorial on how to print something to the screen!
 
 print("Use this as an example for your print function!")
@@ -39,11 +40,33 @@ OBJECTIVE == Print \"Hello World!\" to the screen
             tutIn = input(
 """=========================\n#Now it's your turn - Enter your code below
 """)
-            if tutIn.startswith("print("):
+            if userin.startswith("print("):
                 pass
             else:
-                tutIn = tutIn.replace("print (","print(",1)
-            if tutIn == answer:
+                userin = tutIn.replace("print (","print(",1)
+            userin = userin.replace("'","\"")
+            if userin == answer:
                 break
             else:
-                print("ERROR: yourCode !=",answer)
+                print("ERROR: yourCode != " + answer)
+                if userin.count("\"") != 2:
+                    print("You missed a speech mark")
+                if ("(",")") not in userin:
+                    print("You missed a bracket")
+                if "Hello World" not in userin:
+                    print(
+"""Your text is not correct, check if spelled correctly and it is properly
+capitalised""")
+                    
+        print(
+"""=========================
+Hello World!
+============================""")
+                
+        rlsmTyp(
+"""
+Well done, try this blah blah
+
+-Concatenation
+
+""")
