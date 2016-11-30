@@ -3,7 +3,7 @@ import importlib
 topics = [
     "Print",
     "Variables",
-    "Input",
+    "Inputs",
     "Loops"]
 
 
