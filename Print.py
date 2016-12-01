@@ -61,9 +61,9 @@ Hello World!
                 
         rlsmTyp(
 """
-Well done, try this blah blah
+Well done!
 
-Todo:
--Concatenation
+Sometimes, you'll need to connect two sentences together
+
 
 """)
