@@ -55,7 +55,7 @@ OBJECTIVE == Print \"Hello World!\" to the screen
 capitalised""")
 ###############################################################################
         print(
-"""=========================
+"""============================
 Hello World!
 ============================""")
                 
@@ -63,7 +63,21 @@ Hello World!
 """
 Well done!
 
-Sometimes, you'll need to connect two sentences together
+Sometimes, you'll need to connect two sentences together!
 
-
+I must ask - what's your first name?
 """)
+        while True:
+            userin = input()
+            if len(userin.split()) == 1 and len(userin) == 2:
+                break
+            else:
+                print("Try again")
+                
+        rlsmTyp("print(\"Hello,\" + " + "\"" + userin + "\")")
+
+        print(
+"""============================
+Hello,"""+userin+"""
+============================""")
+
