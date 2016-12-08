@@ -10,29 +10,27 @@ topics = [
 #advancedTopics = [
     #"Formatting",
     #"Functions"]
-lentopic = len(topics)
-hide = 37 - lentopic
 
 def main():
-    for x in range(lentopic):
-        print(str(x+1) + ") " + topics[x])
-    try:
-        while True:
-            try:
-                userinput = int(input("Pick a topic number: "))
-                if userinput in range(1,len(topics)+1):
-                    print("\n"*39)
-                    userinput = topics[userinput-1]
+    while True:
+        for x in range(len(topics)):
+            print(str(x+1) + ") " + topics[x])
+        try:
+            userinput = int(input("Pick a topic number: "))
+            if userinput in range(1,len(topics)+1):
+                print("\n"*39)
+                userinput = topics[userinput-1]
+                try:
                     i = importlib.import_module(userinput)
                     i.lesson("lesson1")
-                else:
-                    print("Please input a number within 1 and {}".format(len(topics)))
-            except ValueError:
-                print ("That wasn't a number!")
+                except KeyboardInterrupt:
+                    print("You have quit the lesson")
+                    print("\n"*39)
+            else:
+                print("Please input a number within 1 and {}".format(len(topics)))
+        except ValueError:
+            print("That wasn't a number!")
+            print("\n"*39)
             
-    except KeyboardInterrupt:
-        print("You have quit the lesson")
-        print("\n"*hide)
-        
 if __name__ == "__main__":
     main()
