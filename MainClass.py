@@ -25,7 +25,7 @@ def main():
                 break
             else:
                 print("Please input a number within 1 and {}".format(lentopic))
-            i = importlib.import_module(userinput)
+            i = importlib.import_module(topics[int(userinput)-1])
             i.lesson("lesson1")
             
     except KeyboardInterrupt:
