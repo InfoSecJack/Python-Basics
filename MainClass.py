@@ -4,23 +4,29 @@ topics = [
     "Print",
     "Variables",
     "Inputs",
-    "Loops",
-    "test"]
+    "If Statements and Indentation",
+    "While and For loops"]
+
+#advancedTopics = [
+    #"Formatting",
+    #"Functions"]
 lentopic = len(topics)
 hide = 37 - lentopic
 
-while True:
+main()
     for x in range(lentopic):
         print(str(x+1) + ") " + topics[x])
     try:
-        userinput = int(input("Pick a topic number: "))
+        userinput = input("Pick a topic number: "))
         if userinput in range(1,lentopic):
-            break
-    except:
-        print("Please input a number")
+            print("\n"*39)
+            userinput = topics[userinput-1]
+            i = importlib.import_module(userinput)
+            i.lesson("lesson1")
+            
+    except KeyboardInterrupt:
+        print("You have quit the lesson")
         print("\n"*hide)
-print("\n"*39)
-userinput = topics[userinput-1]
-i = importlib.import_module(userinput)
-i.lesson("lesson1")
-input("Jace,\nback in main class")
+        
+if __name__ == "__main__":
+    main()
