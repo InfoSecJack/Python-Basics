@@ -23,3 +23,4 @@ print("\n"*39)
 userinput = topics[userinput-1]
 i = importlib.import_module(userinput)
 i.lesson("lesson1")
+input("Jace,\nback in main class")
