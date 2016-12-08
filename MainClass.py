@@ -18,14 +18,13 @@ def main():
         print(str(x+1) + ") " + topics[x])
     try:
         while True:
-            userinput = input("Pick a topic number: ")
-            if userinput in range(1,lentopic):
+            userinput = int(input("Pick a topic number: "))
+            if userinput in range(1,len(topics)):
                 print("\n"*39)
                 userinput = topics[userinput-1]
-                break
             else:
                 print("Please input a number within 1 and {}".format(lentopic))
-            i = importlib.import_module(topics[int(userinput)-1])
+            i = importlib.import_module(userinput)
             i.lesson("lesson1")
             
     except KeyboardInterrupt:
