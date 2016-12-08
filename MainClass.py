@@ -17,7 +17,7 @@ def main():
     for x in range(lentopic):
         print(str(x+1) + ") " + topics[x])
     try:
-        userinput = input("Pick a topic number: "))
+        userinput = input("Pick a topic number: ")
         if userinput in range(1,lentopic):
             print("\n"*39)
             userinput = topics[userinput-1]
