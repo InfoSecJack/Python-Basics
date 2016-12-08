@@ -13,7 +13,7 @@ topics = [
 lentopic = len(topics)
 hide = 37 - lentopic
 
-main()
+def main():
     for x in range(lentopic):
         print(str(x+1) + ") " + topics[x])
     try:
