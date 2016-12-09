@@ -13,6 +13,7 @@ topics = [
 
 def main():
     while True:
+        print ("Topics: ")
         for x in range(len(topics)):
             print(str(x+1) + ") " + topics[x])
         try:
@@ -24,8 +25,9 @@ def main():
                     i = importlib.import_module(userinput)
                     i.lesson("lesson1")
                 except KeyboardInterrupt:
-                    print("You have quit the lesson")
                     print("\n"*39)
+                    print("You have quit the current lesson")
+                    print("\n")
             else:
                 print("Please input a number within 1 and {}".format(len(topics)))
         except ValueError:
