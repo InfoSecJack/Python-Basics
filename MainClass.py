@@ -19,7 +19,7 @@ def main():
         try:
             userinput = int(input("Pick a topic number: "))
             if userinput in range(1,len(topics)+1):
-                print("\n"*50)
+                print("\n"*55)
                 userinput = topics[userinput-1]
                 try:
                     i = importlib.import_module(userinput)
