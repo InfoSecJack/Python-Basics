@@ -6,13 +6,13 @@ class lesson(object):
         self.lesson = lesson
         getattr(lesson,lessonType)()
     def lesson1():
-        def rlsmTyp(sentence):
+        def type(sentence):
             for l in sentence:
                 sys.stdout.write(l)
                 sys.stdout.flush()
                 time.sleep(random.uniform(0,0.1))
 
-        rlsmTyp(
+        type(
 """Lesson: Loops
 
 Sometimes you want code that can repeat itself, to make things
@@ -25,7 +25,7 @@ while True:
         for x in range(200):
             print("This will repeat forever!")
         print("============================")
-        rlsmTyp(
+        type(
 """This is really useful for making things more efficient! You
 won't hae to repeat the same lines of code, you could just have
 one loop doing the same line over and over again!

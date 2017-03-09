@@ -1,0 +1,17 @@
+|================|
+|Lesson: Printing|
+|================|
+
+Hello - This is the tutorial on how to print something to the screen!
+print("Use this as an example for your print function!")
+
+#============================
+#Use this as an example for your print function!
+#============================
+
+->
+As you can see, there is a name that calls the function, the function has
+an opening and closing brackets, and quotations inside them. Remember this!
+Lets start you off the traditional way - 'Hello World!'
+
+#OBJECTIVE[0] == Print 'Hello World!' to the screen
