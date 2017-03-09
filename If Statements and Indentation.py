@@ -24,11 +24,10 @@ while True:
         print("============================")
         for x in range(200):
             print("This will repeat forever!")
-        print("KeyboardInterrupt")
         print("============================")
         rlsmTyp(
 """This is really useful for making things more efficient! You
-won't have to repeat the same lines of code, you could just have
+won't hae to repeat the same lines of code, you could just have
 one loop doing the same line over and over again!
 
 How neat is that?
