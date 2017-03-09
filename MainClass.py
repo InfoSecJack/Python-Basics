@@ -1,40 +1,89 @@
-import importlib
+import importlib, os, sys, time, linecache, shutil
+path = os.path.dirname( os.path.abspath( __file__ ) )
+sys.path.append( path + "\\Lessons" )
+os.chdir( path + "\\Lessons" )
 
-topics = [
-    "Print",
-    "Variables",
-    "Inputs",
-    "If Statements and Indentation",
-    "While and For loops"]
+def findFiles():
+    
+    dirfiles = []
+    for file in os.listdir():
+        if file.endswith( ".py" ):
+            dirfiles.append( file.replace( ".py", "" ,1 ) )
+    
+    total = sum( 1 for line in open( "order.txt" ) ) + 1
+    files = []
+    for line in range( total ):
+        order = linecache.getline( "order.txt", line + 1 ).strip()
+        if os.path.exists( order + ".py" ):
+            files.append( order )
+    newfiles = list( set( dirfiles ) - set( files ) )
 
-#advancedTopics = [
-    #"Formatting",
-    #"Functions"]
+    # If there are new files not configured:
+    while len( newfiles ) != 0:
+        answer = input( "Do you want to add the file, {}, to the list? Inputting 'no' will disable this file".format( newfiles[0] ) + "\n" ).lower()
 
-def main():
+        if answer == "yes":
+            # Add file to order.txt
+            with open( "order.txt", "a" ) as f:
+                f.write( "\n" + newfiles[0] )
+            files.append( newfiles[0] )
+            newfiles = newfiles[1:]
+            
+        elif answer == "no":
+            # Disable
+            shutil.move( newfiles[0] + ".py", "disabled" )
+            newfiles = newfiles[1:]
+            
+        else:
+            print( "Please input 'yes' or 'no'\n" )
+        # This only runs if if/elif is completed
+        # Removes first file from list
+    main( files )
+    
+def main( topics ):
+    errorLn = 1
+    error = ""
+    
     while True:
-        print ("Topics: ")
-        for x in range(len(topics)):
-            print(str(x+1) + ") " + topics[x])
+        #Detects if in IDLE or command line, and accomodates for both
+        newLn = 10 - len( topics )
+        if "idlelib.run" in sys.modules:
+            newLn = 25 - len( topics )
+
+        print( "\n" + time.strftime( "[%d/%m/%Y %H:%M:%S]" ) + "\n" * newLn )
+
+        print( """
+▄▄▌  ▄▄▄ ..▄▄ · .▄▄ ·        ▐ ▄ .▄▄ · 
+██•  ▀▄.▀·▐█ ▀. ▐█ ▀. ▪     •█▌▐█▐█ ▀. 
+██▪  ▐▀▀▪▄▄▀▀▀█▄▄▀▀▀█▄ ▄█▀▄ ▐█▐▐▌▄▀▀▀█▄
+▐█▌▐▌▐█▄▄▌▐█▄▪▐█▐█▄▪▐█▐█▌.▐▌██▐█▌▐█▄▪▐█
+.▀▀▀  ▀▀▀  ▀▀▀▀  ▀▀▀▀  ▀█▄▀▪▀▀ █▪ ▀▀▀▀ """ )
+        
+        print( "\n" + error + "\n" )
+        
+        print( "Topics:" )
+        for num, topic in enumerate( topics ):
+            print( str( num+1 ) + ") " + topic )
+
+            
         try:
-            userinput = int(input("Pick a topic number: "))
-            if userinput in range(1,len(topics)+1):
-                print("\n"*55)
-                userinput = topics[userinput-1]
+            userinput = int( input( "\nPick a topic number: " ) )
+            if userinput in range( 1, len( topics ) + 1 ):
+                print( "\n" * 55 )
+                userinput = topics[ userinput - 1 ]
                 try:
-                    i = importlib.import_module(userinput)
-                    i.lesson("lesson1")
+                    importlib.import_module( userinput )
+                    error = ""
                 except KeyboardInterrupt:
-                    print("\n"*50)
-                    print("You have quit the current lesson\n")
+                    error = "You have quit the current lesson"
+
             else:
-                print("Please input a number within 1 and {}".format(len(topics)))
+                error = "Please input a number within 1 and " + str( len( topics ) )
         except ValueError:
-            print("\n"*50)
-            print("That wasn't a number!\n")
+            error = "That wasn't a full number!"
         except KeyboardInterrupt:
-            print("\n"*50)
+            pass
                 
             
 if __name__ == "__main__":
-    main()
+    findFiles()
